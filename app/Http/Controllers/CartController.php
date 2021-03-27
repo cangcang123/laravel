@@ -56,7 +56,7 @@ class CartController extends Controller
          //$cdc = DB::table('cart_detail')->
          $cdc = DB::table('cart_detail')->select('cart_detail.id AS id','user.name AS nameuser','product.name AS namepro','cart_detail.quantity','product.price AS price','user.adress AS adruser','user.phone AS phone','cart_detail.notes','cart_shopping.status','cart_shopping.id AS idc')->join('Cart_shopping','Cart_shopping.idcd','=','cart_detail.id')->join('user','user.id','=','cart_detail.iduser')->join('product','product.id','=','cart_detail.idsp')->where('cart_shopping.status',1)->get();
 
-          $cus = DB::table('cart_detail')->select('cart_detail.id AS id','customer.name AS nameuser','product.name AS namepro','cart_detail.quantity','product.price AS price','customer.adress AS adruser','customer.phone AS phone','cart_detail.notes','cart_shopping.status')->join('Cart_shopping','Cart_shopping.idcd','=','cart_detail.id')->join('customer','customer.id','=','cart_detail.idcus')->join('product','product.id','=','cart_detail.idsp')->where('cart_shopping.status',1)->get();
+          $cus = DB::table('cart_detail')->select('cart_detail.id AS id','customer.name AS nameuser','product.name AS namepro','cart_detail.quantity','product.price AS price','customer.adress AS adruser','customer.phone AS phone','cart_detail.notes','cart_shopping.status','cart_shopping.id AS idc')->join('Cart_shopping','Cart_shopping.idcd','=','cart_detail.id')->join('customer','customer.id','=','cart_detail.idcus')->join('product','product.id','=','cart_detail.idsp')->where('cart_shopping.status',1)->get();
             return view('admin.cart.showNew',compact('cdc','cus'));     
     }
 
